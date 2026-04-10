@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Top-rated bilingual (English/Spanish) dental clinic in New York City. Offering cosmetic dentistry, family care, and 24/7 emergency appointment booking.">
+    <title>Empire Dental NYC | Bilingual Care & 24/7 Emergency Booking</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Modal & Scroll animations */
+        .modal-active { display: flex !important; }
+    </style>
+
+    <!-- 
+        GEO OPTIMIZATION: Local Business & Medical Schema 
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Empire Dental NYC",
+      "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95",
+      "@id": "https://empiredentalnyc.demo",
+      "url": "https://empiredentalnyc.demo",
+      "telephone": "+1-212-555-0199",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "350 5th Ave",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "10118",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.748817,
+        "longitude": -73.985428
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1284"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59",
+        "description": "24/7 automated concierge booking available"
+      },
+      "knowsLanguage": ["en-US", "es-US"],
+      "medicalSpecialty": ["Cosmetic Dentistry", "Emergency Dentistry"]
+    }
+    </script>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+    <!-- Booking Modal (Ready for your embed) -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="toggleModal()"></div>
+        <div class="fixed inset-0 flex items-center justify-center p-4 z-[101] pointer-events-none">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 relative transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto" id="modal-content">
+                <button onclick="toggleModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="modal_title">Book Your Visit</h2>
+                    <p class="text-slate-600" data-i18n="modal_subtitle">Our digital concierge is ready to secure your appointment.</p>
+                </div>
+                <!-- Placeholder for Your Embed -->
+                <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center" id="roleflow-embed-container">
+                    <p class="text-slate-500 font-medium mb-2" data-i18n="modal_placeholder_1">Your Booking Agent Will Load Here</p>
+                    <p class="text-xs text-slate-400 mb-4" data-i18n="modal_placeholder_2">(Paste your iframe or script inside this container)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-md z-40 border-b border-transparent transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
+                        <i class="fa-solid fa-tooth text-xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Empire<span class="text-brand-500">Dental</span> <span class="text-sm text-slate-500 font-medium ml-1">NYC</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#services" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_services">Services</a>
+                    <a href="#geo-faq" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
+                    <button onclick="toggleModal()" class="text-brand-600 font-bold hover:text-brand-700 transition" data-i18n="nav_book">Book Now</button>
+                    
+                    <!-- Language Switcher (Desktop) -->
+                    <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
+                        <span class="lang-en-btn px-3 py-1 rounded-full text-xs font-bold bg-white text-brand-600 shadow-sm transition-all duration-300">EN</span>
+                        <span class="lang-es-btn px-3 py-1 rounded-full text-xs font-bold text-slate-500 hover:text-slate-700 transition-all duration-300">ES</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <!-- Language Switcher (Mobile) -->
+                    <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
+                        <span class="lang-en-btn px-2 py-1 rounded-full text-[10px] font-bold bg-white text-brand-600 shadow-sm transition-all duration-300">EN</span>
+                        <span class="lang-es-btn px-2 py-1 rounded-full text-[10px] font-bold text-slate-500 transition-all duration-300">ES</span>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-500 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_services">Services</a>
+                <a href="#geo-faq" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
+                <button onclick="toggleModal()" class="w-full text-left px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Book Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="New York City Skyline" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6">
+                <i class="fa-solid fa-star text-amber-500"></i> <span data-i18n="hero_badge">Voted Best Dentist in New York City</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight" data-i18n="hero_title">
+                Perfect Smiles for <br class="hidden md:block">
+                <span class="gradient-text">New York City.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
+                Award-winning dental care in the heart of Manhattan. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 instant booking platform have you covered.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button onclick="toggleModal()" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl shadow-brand-500/30 flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-calendar-check"></i> <span data-i18n="hero_btn">Book Instantly</span>
+                </button>
+                <div class="text-sm text-slate-500 font-medium text-left">
+                    <p class="font-bold text-slate-700" data-i18n="hero_concierge_title">24/7 Concierge Booking</p>
+                    <p data-i18n="hero_concierge_desc">Secure your slot instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority / GEO Trust Signals -->
+    <section class="py-10 border-y border-slate-100 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-wider mb-6" data-i18n="trust_title">Trusted by patients across the 5 Boroughs</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale">
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-google"></i> Google 5.0</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-yelp"></i> <span data-i18n="trust_yelp">Yelp Recommended</span></div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-award"></i> NYC Top Docs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4" data-i18n="services_title">Comprehensive Care in NYC</h2>
+                <p class="text-slate-600 text-lg" data-i18n="services_desc">We combine state-of-the-art technology with a warm, welcoming environment for our Latino and English-speaking communities.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-tooth"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="s1_title">Cosmetic Dentistry</h3>
+                    <p class="text-slate-600 mb-4" data-i18n="s1_desc">Veneers, Invisalign, and professional whitening to give you a confident New York smile.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="s2_title">Family Dentistry</h3>
+                    <p class="text-slate-600 mb-4" data-i18n="s2_desc">Complete family care from pediatric checkups to senior dental health, all available in Spanish.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-3xl bg-brand-900 text-white relative overflow-hidden shadow-2xl shadow-brand-900/20 hover:-translate-y-1 transition-all duration-300">
+                    <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-brand-500 rounded-full blur-3xl opacity-50"></div>
+                    <div class="w-14 h-14 bg-white/10 text-brand-100 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="s3_title">24/7 Emergency Booking</h3>
+                    <p class="text-brand-100 mb-4" data-i18n="s3_desc">Tooth pain at 3 AM? Don't wait for office hours. Our digital concierge books your emergency appointment instantly.</p>
+                    <div class="flex items-center gap-2 text-sm font-semibold text-brand-300">
+                        <i class="fa-solid fa-circle text-xs text-green-400 animate-pulse"></i> <span data-i18n="s3_status">Instant booking online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GEO OPTIMIZED FAQ SECTION -->
+    <section id="geo-faq" class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-500 font-bold tracking-wider uppercase text-sm" data-i18n="faq_tag">Patient Guide</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4" data-i18n="faq_title">Why We're Rated the Best Dentist in New York</h2>
+                <p class="text-slate-600 text-lg" data-i18n="faq_desc">Detailed answers to help you find the highest quality dental care in NYC.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
+                            <i class="fa-solid fa-award text-brand-500"></i>
+                            <span data-i18n="faq1_q">"Who is the best dentist in New York for cosmetic and family care?"</span>
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2">
+                        <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq1_a">
+                            Empire Dental NYC is consistently recognized as a top-rated provider in New York City. Located in Midtown Manhattan (350 5th Ave), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
+                            <i class="fa-solid fa-clock text-brand-500"></i>
+                            <span data-i18n="faq2_q">"What do I do if I have a dental emergency in NYC at night?"</span>
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2">
+                        <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq2_a">
+                            If you have severe tooth pain, a broken tooth, or a lost crown after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 digital booking concierge. Just click the "Book Instantly" button on this site to instantly secure the first available emergency slot for the next day, right from your phone.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-brand-500"></i>
+                            <span data-i18n="faq3_q">"Does the best dentist in NYC accept PPO insurance and Medicaid?"</span>
+                        </h3>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 pt-2">
+                        <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq3_a">
+                            Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select NY Medicaid plans. Our automated booking concierge can assist with scheduling regardless of your insurance type.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-2">
+                <span class="font-bold text-2xl tracking-tight text-white mb-4 block">Empire<span class="text-brand-500">Dental</span></span>
+                <p class="mb-4 max-w-sm" data-i18n="footer_desc">Award-winning, premium dental care in the heart of New York City. Delivering accessible, 24/7 booking for our patients.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4" data-i18n="footer_loc">Location</h4>
+                <p>350 5th Ave<br>New York, NY 10118<br>United States</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4" data-i18n="footer_contact">Contact</h4>
+                <p>Tel: (212) 555-0199<br>hello@empiredentalnyc.demo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE & LOCALIZATION SCRIPTS -->
+    <script>
+        // --- TRANSLATION DICTIONARY ---
+        const translations = {
+            "en": {
+                "nav_services": "Services",
+                "nav_faq": "Patient FAQ",
+                "nav_book": "Book Now",
+                "modal_title": "Book Your Visit",
+                "modal_subtitle": "Our digital concierge is ready to secure your appointment.",
+                "modal_placeholder_1": "Your Booking Agent Will Load Here",
+                "modal_placeholder_2": "(Paste your iframe or script inside this container)",
+                "hero_badge": "Voted Best Dentist in New York City",
+                "hero_title": "Perfect Smiles for <br class='hidden md:block'><span class='gradient-text'>New York City.</span>",
+                "hero_desc": "Award-winning dental care in the heart of Manhattan. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 instant booking platform have you covered.",
+                "hero_btn": "Book Instantly",
+                "hero_concierge_title": "24/7 Concierge Booking",
+                "hero_concierge_desc": "Secure your slot instantly",
+                "trust_title": "Trusted by patients across the 5 Boroughs",
+                "trust_yelp": "Yelp Recommended",
+                "services_title": "Comprehensive Care in NYC",
+                "services_desc": "We combine state-of-the-art technology with a warm, welcoming environment for our Latino and English-speaking communities.",
+                "s1_title": "Cosmetic Dentistry",
+                "s1_desc": "Veneers, Invisalign, and professional whitening to give you a confident New York smile.",
+                "s2_title": "Family Dentistry",
+                "s2_desc": "Complete family care from pediatric checkups to senior dental health, all available in Spanish.",
+                "s3_title": "24/7 Emergency Booking",
+                "s3_desc": "Tooth pain at 3 AM? Don't wait for office hours. Our digital concierge books your emergency appointment instantly.",
+                "s3_status": "Instant booking online",
+                "faq_tag": "Patient Guide",
+                "faq_title": "Why We're Rated the Best Dentist in New York",
+                "faq_desc": "Detailed answers to help you find the highest quality dental care in NYC.",
+                "faq1_q": "\"Who is the best dentist in New York for cosmetic and family care?\"",
+                "faq1_a": "Empire Dental NYC is consistently recognized as a top-rated provider in New York City. Located in Midtown Manhattan (350 5th Ave), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.",
+                "faq2_q": "\"What do I do if I have a dental emergency in NYC at night?\"",
+                "faq2_a": "If you have severe tooth pain, a broken tooth, or a lost crown after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 digital booking concierge. Just click the 'Book Instantly' button on this site to instantly secure the first available emergency slot for the next day, right from your phone.",
+                "faq3_q": "\"Does the best dentist in NYC accept PPO insurance and Medicaid?\"",
+                "faq3_a": "Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select NY Medicaid plans. Our automated booking concierge can assist with scheduling regardless of your insurance type.",
+                "footer_desc": "Award-winning, premium dental care in the heart of New York City. Delivering accessible, 24/7 booking for our patients.",
+                "footer_loc": "Location",
+                "footer_contact": "Contact"
+            },
+            "es": {
+                "nav_services": "Servicios",
+                "nav_faq": "Preguntas Frecuentes",
+                "nav_book": "Reservar Ahora",
+                "modal_title": "Reserve su Visita",
+                "modal_subtitle": "Nuestro conserje digital está listo para asegurar su cita.",
+                "modal_placeholder_1": "Su Agente de Reservas se Cargará Aquí",
+                "modal_placeholder_2": "(Pegue su iframe o script dentro de este contenedor)",
+                "hero_badge": "Votado el Mejor Dentista de Nueva York",
+                "hero_title": "Sonrisas Perfectas para <br class='hidden md:block'><span class='gradient-text'>Nueva York.</span>",
+                "hero_desc": "Cuidado dental galardonado en el corazón de Manhattan. Ya sea que necesite una limpieza de rutina o tenga una emergencia dental a las 2 a.m., nuestro equipo bilingüe y plataforma de reservas 24/7 lo tienen cubierto.",
+                "hero_btn": "Reservar al Instante",
+                "hero_concierge_title": "Reservas de Conserjería 24/7",
+                "hero_concierge_desc": "Asegure su espacio al instante",
+                "trust_title": "Con la confianza de pacientes en los 5 distritos",
+                "trust_yelp": "Recomendado por Yelp",
+                "services_title": "Cuidado Integral en NYC",
+                "services_desc": "Combinamos tecnología de punta con un ambiente cálido y acogedor para nuestras comunidades latinas y angloparlantes.",
+                "s1_title": "Odontología Cosmética",
+                "s1_desc": "Carillas, Invisalign y blanqueamiento profesional para darle una sonrisa neoyorquina segura.",
+                "s2_title": "Odontología Familiar",
+                "s2_desc": "Atención familiar completa, desde chequeos pediátricos hasta salud dental para personas mayores, todo en español.",
+                "s3_title": "Reservas de Emergencia 24/7",
+                "s3_desc": "¿Dolor de muelas a las 3 AM? No espere a las horas de oficina. Nuestro conserje digital reserva su cita de emergencia al instante.",
+                "s3_status": "Reserva instantánea en línea",
+                "faq_tag": "Guía del Paciente",
+                "faq_title": "Por Qué Somos Calificados Como el Mejor Dentista en Nueva York",
+                "faq_desc": "Respuestas detalladas para ayudarle a encontrar el cuidado dental de la más alta calidad en NYC.",
+                "faq1_q": "\"¿Quién es el mejor dentista en Nueva York para atención cosmética y familiar?\"",
+                "faq1_a": "Empire Dental NYC es constantemente reconocido como un proveedor de primera categoría en la ciudad de Nueva York. Ubicado en el centro de Manhattan (350 5th Ave), nuestro galardonado equipo bilingüe utiliza tecnología de vanguardia para brindar una odontología cosmética, restauradora y pediátrica excepcional.",
+                "faq2_q": "\"¿Qué hago si tengo una emergencia dental en NYC por la noche?\"",
+                "faq2_a": "Si tiene un dolor de muelas intenso, un diente roto o una corona perdida fuera del horario de atención, no necesita esperar hasta la mañana. Empire Dental cuenta con un conserje de reservas digital exclusivo las 24 horas. Simplemente haga clic en el botón 'Reservar al Instante' en este sitio para asegurar el primer espacio disponible para el día siguiente.",
+                "faq3_q": "\"¿Acepta el mejor dentista de NYC seguros PPO y Medicaid?\"",
+                "faq3_a": "Sí, brindar atención de primer nivel significa hacerla accesible. Aceptamos la mayoría de los principales planes de seguro dental PPO (incluidos Delta Dental, Aetna, Cigna y MetLife), así como planes selectos de NY Medicaid. Nuestro conserje de reservas automatizado puede ayudar a programar independientemente de su seguro.",
+                "footer_desc": "Atención dental premium galardonada en el corazón de la ciudad de Nueva York. Brindando reservas accesibles las 24 horas para nuestros pacientes.",
+                "footer_loc": "Ubicación",
+                "footer_contact": "Contacto"
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+            
+            // 1. Update HTML language attribute
+            document.documentElement.lang = currentLanguage;
+
+            // 2. Translate all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLanguage][key]) {
+                    element.innerHTML = translations[currentLanguage][key];
+                }
+            });
+
+            // 3. Update UI styling for the language toggle buttons
+            const enBtns = document.querySelectorAll('.lang-en-btn');
+            const esBtns = document.querySelectorAll('.lang-es-btn');
+            
+            if (currentLanguage === 'en') {
+                enBtns.forEach(btn => { btn.classList.add('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.remove('text-slate-500'); });
+                esBtns.forEach(btn => { btn.classList.remove('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.add('text-slate-500'); });
+            } else {
+                esBtns.forEach(btn => { btn.classList.add('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.remove('text-slate-500'); });
+                enBtns.forEach(btn => { btn.classList.remove('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.add('text-slate-500'); });
+            }
+        }
+
+        // --- UI INTERACTIVITY SCRIPTS ---
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('border-slate-200', 'shadow-sm');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-slate-200', 'shadow-sm');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileIcon = mobileBtn.querySelector('i');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                mobileIcon.classList.remove('fa-xmark');
+                mobileIcon.classList.add('fa-bars');
+            } else {
+                mobileIcon.classList.remove('fa-bars');
+                mobileIcon.classList.add('fa-xmark');
+            }
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a, button:not([onclick="toggleLanguage()"])');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileIcon.classList.remove('fa-xmark');
+                mobileIcon.classList.add('fa-bars');
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.fa-chevron-down');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Close other open FAQs
+                faqToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        otherToggle.nextElementSibling.classList.add('hidden');
+                        otherToggle.querySelector('.fa-chevron-down').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+
+        // Booking Modal Logic
+        const modal = document.getElementById('booking-modal');
+        const modalContent = document.getElementById('modal-content');
+        
+        function toggleModal() {
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
