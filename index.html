@@ -515,5 +515,37 @@
             }
         }
     </script>
+    
+    <!-- TailorTalk Agent Integration -->
+    <script>
+      (function() {
+        function loadTailorTalkWidget(callback) {
+          var script = document.createElement('script');
+          script.src = "https://plugins.tailortalk.ai/widget.js";
+          script.onload = callback;
+          document.head.appendChild(script);
+        }
+
+        loadTailorTalkWidget(function() {
+          // Now TailorTalk is defined
+          TailorTalk.init({
+            chatWindowTitle: "EmpireDental",
+            agentId: "taongeti",
+            color: "#6366f1",
+            position: "right",
+            options: {
+              "buttonText": "Let's Chat",
+              "welcomeMessage": "How can I make your smile better?",
+              "buttonIcon": "message-circle",
+              "popupMessageDelay": 0,
+              "popupMessage": "",
+              "quickQuestions": [],
+              "askDetails": true,
+              "defaultCountryCode": "US"
+            }
+          });
+        });
+      })();
+    </script>
 </body>
 </html>
