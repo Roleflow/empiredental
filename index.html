@@ -276,6 +276,20 @@
         </div>
     </footer>
 
+    <button id="chat-bubble" onclick="toggleAgent()" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-brand-700 transition-transform hover:scale-110 z-40">
+        <i class="fa-solid fa-message"></i>
+    </button>
+
+    <div id="chat-iframe-container" class="fixed bottom-24 right-6 z-50 hidden rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white transition-opacity duration-300" style="width: 400px; height: 600px; max-width: calc(100vw - 3rem); max-height: calc(100vh - 8rem);">
+        
+        <button onclick="toggleAgent()" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 z-10 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center shadow-sm border border-slate-100 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <iframe src="https://ulioai.lovable.app/chatbot-embed/YOUR_SHOP_ID" style="border:none; width:100%; height:100%;" allow="microphone"></iframe>
+    </div>
+
+
     <script>
         // --- TRANSLATION DICTIONARY ---
         const translations = {
@@ -438,19 +452,18 @@
         });
 
         // ==========================================
-        // BUTTON STUB TO PREVENT ERRORS
+        // CHATBOT WIDGET LOGIC
         // ==========================================
-        // This acts as a fallback for the "Book Now" buttons to prompt 
-        // the user to use the newly injected Supabase chat widget.
+        const iframeContainer = document.getElementById('chat-iframe-container');
+        
+        function toggleAgent() {
+            iframeContainer.classList.toggle('hidden');
+        }
+
+        // Keep this openAgent function so the "Book Now" buttons still work seamlessly
         function openAgent() {
-            alert("To book an appointment instantly, please click the chat widget in the bottom right corner of your screen!");
+            iframeContainer.classList.remove('hidden');
         }
     </script>
-
-    <script src="https://vgwynhndkizbmcrlfkym.supabase.co/functions/v1/serve-chatbot-widget"
-      data-shop-id="YOUR_SHOP_ID"
-      data-position="right"
-      data-color="#0284C7"
-    ></script>
 </body>
 </html>
