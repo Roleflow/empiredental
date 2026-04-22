@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Top-rated bilingual (English/Spanish) dental clinic in New York City. Offering cosmetic dentistry, family care, and 24/7 emergency appointment booking.">
-    <title>Empire Dental NYC | Bilingual Care & 24/7 Emergency Booking</title>
+    <meta name="description" content="Top-rated bilingual (English/Spanish) dental clinic in Houston, TX. Offering cosmetic dentistry, family care, and 24/7 emergency appointment booking.">
+    <title>Empire Dental Houston | Bilingual Care & 24/7 Emergency Booking</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -44,23 +44,23 @@
     {
       "@context": "https://schema.org",
       "@type": "Dentist",
-      "name": "Empire Dental NYC",
+      "name": "Empire Dental Houston",
       "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95",
-      "@id": "https://empiredentalnyc.demo",
-      "url": "https://empiredentalnyc.demo",
-      "telephone": "+1-212-555-0199",
+      "@id": "https://empiredentalhouston.demo",
+      "url": "https://empiredentalhouston.demo",
+      "telephone": "+1-832-637-5672",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "350 5th Ave",
-        "addressLocality": "New York",
-        "addressRegion": "NY",
-        "postalCode": "10118",
+        "streetAddress": "1000 Main St",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "postalCode": "77002",
         "addressCountry": "US"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 40.748817,
-        "longitude": -73.985428
+        "latitude": 29.7589,
+        "longitude": -95.3677
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -88,13 +88,14 @@
                     <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
                         <i class="fa-solid fa-tooth text-xl"></i>
                     </div>
-                    <span class="font-bold text-2xl tracking-tight text-slate-900">Empire<span class="text-brand-500">Dental</span> <span class="text-sm text-slate-500 font-medium ml-1">NYC</span></span>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Empire<span class="text-brand-500">Dental</span> <span class="text-sm text-slate-500 font-medium ml-1">TX</span></span>
                 </div>
                 
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#services" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_services">Services</a>
                     <a href="#geo-faq" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
-                    <button onclick="openAgent()" class="text-brand-600 font-bold hover:text-brand-700 transition" data-i18n="nav_book">Book Now</button>
+                    <a href="tel:8326375672" class="text-brand-600 font-bold hover:text-brand-700 transition" data-i18n="nav_call">Call AI Agent</a>
+                    <button onclick="openAgent()" class="bg-brand-50 text-brand-600 px-4 py-2 rounded-full font-bold hover:bg-brand-100 transition" data-i18n="nav_book">Chat to Book</button>
                     
                     <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
                         <span class="lang-en-btn px-3 py-1 rounded-full text-xs font-bold bg-white text-brand-600 shadow-sm transition-all duration-300">EN</span>
@@ -118,47 +119,56 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#services" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_services">Services</a>
                 <a href="#geo-faq" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
-                <button onclick="openAgent()" class="w-full text-left px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Book Now</button>
+                <a href="tel:8326375672" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_call">Call AI Agent</a>
+                <button onclick="openAgent()" class="w-full text-left px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Chat to Book</button>
             </div>
         </div>
     </nav>
 
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="New York City Skyline" class="w-full h-full object-cover opacity-10">
+            <img src="https://images.unsplash.com/photo-1531218150217-545f8b14ca8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Houston City Skyline" class="w-full h-full object-cover opacity-15">
             <div class="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white"></div>
         </div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6">
-                <i class="fa-solid fa-star text-amber-500"></i> <span data-i18n="hero_badge">Voted Best Dentist in New York City</span>
+                <i class="fa-solid fa-star text-amber-500"></i> <span data-i18n="hero_badge">Voted Best Dentist in Houston</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight" data-i18n="hero_title">
                 Perfect Smiles for <br class="hidden md:block">
-                <span class="gradient-text">New York City.</span>
+                <span class="gradient-text">Houston.</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
-                Award-winning dental care in the heart of Manhattan. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 instant booking platform have you covered.
+                Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 AI booking agent have you covered.
             </p>
+            
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <button onclick="openAgent()" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl shadow-brand-500/30 flex items-center gap-3 w-full sm:w-auto justify-center">
-                    <i class="fa-solid fa-calendar-check"></i> <span data-i18n="hero_btn">Book Instantly</span>
+                <a href="tel:8326375672" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl shadow-brand-500/30 flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-phone-volume animate-bounce"></i> 
+                    <div class="text-left">
+                        <span class="block text-sm font-medium opacity-90" data-i18n="hero_call_sub">Call our AI Agent</span>
+                        <span class="block">(832) 637-5672</span>
+                    </div>
+                </a>
+                
+                <button onclick="openAgent()" class="bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-message text-brand-500"></i> <span data-i18n="hero_btn">Chat to Book</span>
                 </button>
-                <div class="text-sm text-slate-500 font-medium text-left">
-                    <p class="font-bold text-slate-700" data-i18n="hero_concierge_title">24/7 Concierge Booking</p>
-                    <p data-i18n="hero_concierge_desc">Secure your slot instantly</p>
-                </div>
+            </div>
+            <div class="mt-4 text-sm text-slate-500 font-medium text-center">
+                <p data-i18n="hero_concierge_desc">Secure your slot instantly, 24/7.</p>
             </div>
         </div>
     </section>
 
     <section class="py-10 border-y border-slate-100 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-wider mb-6" data-i18n="trust_title">Trusted by patients across the 5 Boroughs</p>
+            <p class="text-center text-sm font-bold text-slate-400 uppercase tracking-wider mb-6" data-i18n="trust_title">Trusted by patients across Greater Houston</p>
             <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale">
                 <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-google"></i> Google 5.0</div>
                 <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-brands fa-yelp"></i> <span data-i18n="trust_yelp">Yelp Recommended</span></div>
-                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-award"></i> NYC Top Docs</div>
+                <div class="flex items-center gap-2 text-xl font-bold"><i class="fa-solid fa-award"></i> Texas Top Docs</div>
             </div>
         </div>
     </section>
@@ -166,7 +176,7 @@
     <section id="services" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4" data-i18n="services_title">Comprehensive Care in NYC</h2>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4" data-i18n="services_title">Comprehensive Care in Houston</h2>
                 <p class="text-slate-600 text-lg" data-i18n="services_desc">We combine state-of-the-art technology with a warm, welcoming environment for our Latino and English-speaking communities.</p>
             </div>
             
@@ -176,7 +186,7 @@
                         <i class="fa-solid fa-tooth"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3" data-i18n="s1_title">Cosmetic Dentistry</h3>
-                    <p class="text-slate-600 mb-4" data-i18n="s1_desc">Veneers, Invisalign, and professional whitening to give you a confident New York smile.</p>
+                    <p class="text-slate-600 mb-4" data-i18n="s1_desc">Veneers, Invisalign, and professional whitening to give you a confident Houston smile.</p>
                 </div>
                 
                 <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -190,12 +200,12 @@
                 <div class="p-8 rounded-3xl bg-brand-900 text-white relative overflow-hidden shadow-2xl shadow-brand-900/20 hover:-translate-y-1 transition-all duration-300">
                     <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-brand-500 rounded-full blur-3xl opacity-50"></div>
                     <div class="w-14 h-14 bg-white/10 text-brand-100 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
-                        <i class="fa-solid fa-truck-medical"></i>
+                        <i class="fa-solid fa-robot"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" data-i18n="s3_title">24/7 Emergency Booking</h3>
-                    <p class="text-brand-100 mb-4" data-i18n="s3_desc">Tooth pain at 3 AM? Don't wait for office hours. Our digital concierge books your emergency appointment instantly.</p>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="s3_title">24/7 AI Receptionist</h3>
+                    <p class="text-brand-100 mb-4" data-i18n="s3_desc">Tooth pain at 3 AM? Call our AI Agent directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.</p>
                     <div class="flex items-center gap-2 text-sm font-semibold text-brand-300">
-                        <i class="fa-solid fa-circle text-xs text-green-400 animate-pulse"></i> <span data-i18n="s3_status">Instant booking online</span>
+                        <i class="fa-solid fa-circle text-xs text-green-400 animate-pulse"></i> <span data-i18n="s3_status">Call or Chat Online</span>
                     </div>
                 </div>
             </div>
@@ -206,8 +216,8 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-brand-500 font-bold tracking-wider uppercase text-sm" data-i18n="faq_tag">Patient Guide</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4" data-i18n="faq_title">Why We're Rated the Best Dentist in New York</h2>
-                <p class="text-slate-600 text-lg" data-i18n="faq_desc">Detailed answers to help you find the highest quality dental care in NYC.</p>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-4" data-i18n="faq_title">Why We're Rated the Best Dentist in Houston</h2>
+                <p class="text-slate-600 text-lg" data-i18n="faq_desc">Detailed answers to help you find the highest quality dental care in TX.</p>
             </div>
 
             <div class="space-y-4">
@@ -215,13 +225,13 @@
                     <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
                         <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
                             <i class="fa-solid fa-award text-brand-500"></i>
-                            <span data-i18n="faq1_q">"Who is the best dentist in New York for cosmetic and family care?"</span>
+                            <span data-i18n="faq1_q">"Who is the best dentist in Houston for cosmetic and family care?"</span>
                         </h3>
                         <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2">
                         <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq1_a">
-                            Empire Dental NYC is consistently recognized as a top-rated provider in New York City. Located in Midtown Manhattan (350 5th Ave), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.
+                            Empire Dental Houston is consistently recognized as a top-rated provider in Texas. Located in Downtown Houston (1000 Main St), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.
                         </p>
                     </div>
                 </div>
@@ -230,13 +240,13 @@
                     <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
                         <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
                             <i class="fa-solid fa-clock text-brand-500"></i>
-                            <span data-i18n="faq2_q">"What do I do if I have a dental emergency in NYC at night?"</span>
+                            <span data-i18n="faq2_q">"What do I do if I have a dental emergency in Houston at night?"</span>
                         </h3>
                         <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2">
                         <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq2_a">
-                            If you have severe tooth pain, a broken tooth, or a lost crown after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 digital booking concierge. Just click the "Book Instantly" button on this site to instantly secure the first available emergency slot for the next day, right from your phone.
+                            If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 AI Voice and Chat Agent. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.
                         </p>
                     </div>
                 </div>
@@ -245,13 +255,13 @@
                     <button class="w-full text-left p-6 flex justify-between items-center focus:outline-none faq-toggle">
                         <h3 class="text-lg font-bold text-slate-900 flex items-center gap-3">
                             <i class="fa-solid fa-shield-halved text-brand-500"></i>
-                            <span data-i18n="faq3_q">"Does the best dentist in NYC accept PPO insurance and Medicaid?"</span>
+                            <span data-i18n="faq3_q">"Does the best dentist in Houston accept PPO insurance and Medicaid?"</span>
                         </h3>
                         <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2">
                         <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq3_a">
-                            Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select NY Medicaid plans. Our automated booking concierge can assist with scheduling regardless of your insurance type.
+                            Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated AI concierge can assist with scheduling regardless of your insurance type.
                         </p>
                     </div>
                 </div>
@@ -263,32 +273,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="col-span-2">
                 <span class="font-bold text-2xl tracking-tight text-white mb-4 block">Empire<span class="text-brand-500">Dental</span></span>
-                <p class="mb-4 max-w-sm" data-i18n="footer_desc">Award-winning, premium dental care in the heart of New York City. Delivering accessible, 24/7 booking for our patients.</p>
+                <p class="mb-4 max-w-sm" data-i18n="footer_desc">Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our AI Voice & Chat Agent.</p>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4" data-i18n="footer_loc">Location</h4>
-                <p>350 5th Ave<br>New York, NY 10118<br>United States</p>
+                <p>1000 Main St<br>Houston, TX 77002<br>United States</p>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4" data-i18n="footer_contact">Contact</h4>
-                <p>Tel: (212) 555-0199<br>hello@empiredentalnyc.demo</p>
+                <p>Tel: (832) 637-5672<br>hello@empiredentalhouston.demo</p>
             </div>
         </div>
     </footer>
-
-    <button id="chat-bubble" onclick="toggleAgent()" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-600 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-brand-700 transition-transform hover:scale-110 z-40">
-        <i class="fa-solid fa-message"></i>
-    </button>
-
-    <div id="chat-iframe-container" class="fixed bottom-24 right-6 z-50 hidden rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white transition-opacity duration-300" style="width: 400px; height: 600px; max-width: calc(100vw - 3rem); max-height: calc(100vh - 8rem);">
-        
-        <button onclick="toggleAgent()" class="absolute top-3 right-3 text-slate-500 hover:text-slate-800 z-10 bg-white/90 rounded-full w-8 h-8 flex items-center justify-center shadow-sm border border-slate-100 transition-colors">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <iframe src="https://ulioai.lovable.app/chatbot-embed/YOUR_SHOP_ID" style="border:none; width:100%; height:100%;" allow="microphone"></iframe>
-    </div>
-
 
     <script>
         // --- TRANSLATION DICTIONARY ---
@@ -296,68 +292,70 @@
             "en": {
                 "nav_services": "Services",
                 "nav_faq": "Patient FAQ",
-                "nav_book": "Book Now",
-                "hero_badge": "Voted Best Dentist in New York City",
-                "hero_title": "Perfect Smiles for <br class='hidden md:block'><span class='gradient-text'>New York City.</span>",
-                "hero_desc": "Award-winning dental care in the heart of Manhattan. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 instant booking platform have you covered.",
-                "hero_btn": "Book Instantly",
-                "hero_concierge_title": "24/7 Concierge Booking",
-                "hero_concierge_desc": "Secure your slot instantly",
-                "trust_title": "Trusted by patients across the 5 Boroughs",
+                "nav_call": "Call AI Agent",
+                "nav_book": "Chat to Book",
+                "hero_badge": "Voted Best Dentist in Houston",
+                "hero_title": "Perfect Smiles for <br class='hidden md:block'><span class='gradient-text'>Houston.</span>",
+                "hero_desc": "Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 AI booking agent have you covered.",
+                "hero_call_sub": "Call our AI Agent",
+                "hero_btn": "Chat to Book",
+                "hero_concierge_desc": "Secure your slot instantly, 24/7.",
+                "trust_title": "Trusted by patients across Greater Houston",
                 "trust_yelp": "Yelp Recommended",
-                "services_title": "Comprehensive Care in NYC",
+                "services_title": "Comprehensive Care in Houston",
                 "services_desc": "We combine state-of-the-art technology with a warm, welcoming environment for our Latino and English-speaking communities.",
                 "s1_title": "Cosmetic Dentistry",
-                "s1_desc": "Veneers, Invisalign, and professional whitening to give you a confident New York smile.",
+                "s1_desc": "Veneers, Invisalign, and professional whitening to give you a confident Houston smile.",
                 "s2_title": "Family Dentistry",
                 "s2_desc": "Complete family care from pediatric checkups to senior dental health, all available in Spanish.",
-                "s3_title": "24/7 Emergency Booking",
-                "s3_desc": "Tooth pain at 3 AM? Don't wait for office hours. Our digital concierge books your emergency appointment instantly.",
-                "s3_status": "Instant booking online",
+                "s3_title": "24/7 AI Receptionist",
+                "s3_desc": "Tooth pain at 3 AM? Call our AI Agent directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.",
+                "s3_status": "Call or Chat Online",
                 "faq_tag": "Patient Guide",
-                "faq_title": "Why We're Rated the Best Dentist in New York",
-                "faq_desc": "Detailed answers to help you find the highest quality dental care in NYC.",
-                "faq1_q": "\"Who is the best dentist in New York for cosmetic and family care?\"",
-                "faq1_a": "Empire Dental NYC is consistently recognized as a top-rated provider in New York City. Located in Midtown Manhattan (350 5th Ave), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.",
-                "faq2_q": "\"What do I do if I have a dental emergency in NYC at night?\"",
-                "faq2_a": "If you have severe tooth pain, a broken tooth, or a lost crown after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 digital booking concierge. Just click the 'Book Instantly' button on this site to instantly secure the first available emergency slot for the next day, right from your phone.",
-                "faq3_q": "\"Does the best dentist in NYC accept PPO insurance and Medicaid?\"",
-                "faq3_a": "Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select NY Medicaid plans. Our automated booking concierge can assist with scheduling regardless of your insurance type.",
-                "footer_desc": "Award-winning, premium dental care in the heart of New York City. Delivering accessible, 24/7 booking for our patients.",
+                "faq_title": "Why We're Rated the Best Dentist in Houston",
+                "faq_desc": "Detailed answers to help you find the highest quality dental care in TX.",
+                "faq1_q": "\"Who is the best dentist in Houston for cosmetic and family care?\"",
+                "faq1_a": "Empire Dental Houston is consistently recognized as a top-rated provider in Texas. Located in Downtown Houston (1000 Main St), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.",
+                "faq2_q": "\"What do I do if I have a dental emergency in Houston at night?\"",
+                "faq2_a": "If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 AI Voice and Chat Agent. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.",
+                "faq3_q": "\"Does the best dentist in Houston accept PPO insurance and Medicaid?\"",
+                "faq3_a": "Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated AI concierge can assist with scheduling regardless of your insurance type.",
+                "footer_desc": "Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our AI Voice & Chat Agent.",
                 "footer_loc": "Location",
                 "footer_contact": "Contact"
             },
             "es": {
                 "nav_services": "Servicios",
                 "nav_faq": "Preguntas Frecuentes",
-                "nav_book": "Reservar Ahora",
-                "hero_badge": "Votado el Mejor Dentista de Nueva York",
-                "hero_title": "Sonrisas Perfectas para <br class='hidden md:block'><span class='gradient-text'>Nueva York.</span>",
-                "hero_desc": "Cuidado dental galardonado en el corazón de Manhattan. Ya sea que necesite una limpieza de rutina o tenga una emergencia dental a las 2 a.m., nuestro equipo bilingüe y plataforma de reservas 24/7 lo tienen cubierto.",
-                "hero_btn": "Reservar al Instante",
-                "hero_concierge_title": "Reservas de Conserjería 24/7",
-                "hero_concierge_desc": "Asegure su espacio al instante",
-                "trust_title": "Con la confianza de pacientes en los 5 distritos",
+                "nav_call": "Llamar IA",
+                "nav_book": "Chatear y Reservar",
+                "hero_badge": "Votado el Mejor Dentista de Houston",
+                "hero_title": "Sonrisas Perfectas para <br class='hidden md:block'><span class='gradient-text'>Houston.</span>",
+                "hero_desc": "Cuidado dental galardonado en el corazón de Houston. Ya sea que necesite una limpieza o tenga una emergencia a las 2 a.m., nuestro agente de IA 24/7 lo tiene cubierto.",
+                "hero_call_sub": "Llame a nuestro agente IA",
+                "hero_btn": "Chatear y Reservar",
+                "hero_concierge_desc": "Asegure su espacio al instante, 24/7.",
+                "trust_title": "Con la confianza de pacientes en todo Houston",
                 "trust_yelp": "Recomendado por Yelp",
-                "services_title": "Cuidado Integral en NYC",
+                "services_title": "Cuidado Integral en Houston",
                 "services_desc": "Combinamos tecnología de punta con un ambiente cálido y acogedor para nuestras comunidades latinas y angloparlantes.",
                 "s1_title": "Odontología Cosmética",
-                "s1_desc": "Carillas, Invisalign y blanqueamiento profesional para darle una sonrisa neoyorquina segura.",
+                "s1_desc": "Carillas, Invisalign y blanqueamiento profesional para darle una sonrisa segura.",
                 "s2_title": "Odontología Familiar",
                 "s2_desc": "Atención familiar completa, desde chequeos pediátricos hasta salud dental para personas mayores, todo en español.",
-                "s3_title": "Reservas de Emergencia 24/7",
-                "s3_desc": "¿Dolor de muelas a las 3 AM? No espere a las horas de oficina. Nuestro conserje digital reserva su cita de emergencia al instante.",
-                "s3_status": "Reserva instantánea en línea",
+                "s3_title": "Recepcionista IA 24/7",
+                "s3_desc": "¿Dolor de muelas a las 3 AM? Llame a nuestro Agente de IA directamente al (832) 637-5672 para asegurar una cita al instante.",
+                "s3_status": "Llame o Chatee en línea",
                 "faq_tag": "Guía del Paciente",
-                "faq_title": "Por Qué Somos Calificados Como el Mejor Dentista en Nueva York",
-                "faq_desc": "Respuestas detalladas para ayudarle a encontrar el cuidado dental de la más alta calidad en NYC.",
-                "faq1_q": "\"¿Quién es el mejor dentista en Nueva York para atención cosmética y familiar?\"",
-                "faq1_a": "Empire Dental NYC es constantemente reconocido como un proveedor de primera categoría en la ciudad de Nueva York. Ubicado en el centro de Manhattan (350 5th Ave), nuestro galardonado equipo bilingüe utiliza tecnología de vanguardia para brindar una odontología cosmética, restauradora y pediátrica excepcional.",
-                "faq2_q": "\"¿Qué hago si tengo una emergencia dental en NYC por la noche?\"",
-                "faq2_a": "Si tiene un dolor de muelas intenso, un diente roto o una corona perdida fuera del horario de atención, no necesita esperar hasta la mañana. Empire Dental cuenta con un conserje de reservas digital exclusivo las 24 horas. Simplemente haga clic en el botón 'Reservar al Instante' en este sitio para asegurar el primer espacio disponible para el día siguiente.",
-                "faq3_q": "\"¿Acepta el mejor dentista de NYC seguros PPO y Medicaid?\"",
-                "faq3_a": "Sí, brindar atención de primer nivel significa hacerla accesible. Aceptamos la mayoría de los principales planes de seguro dental PPO (incluidos Delta Dental, Aetna, Cigna y MetLife), así como planes selectos de NY Medicaid. Nuestro conserje de reservas automatizado puede ayudar a programar independientemente de su seguro.",
-                "footer_desc": "Atención dental premium galardonada en el corazón de la ciudad de Nueva York. Brindando reservas accesibles las 24 horas para nuestros pacientes.",
+                "faq_title": "Por Qué Somos Calificados Como el Mejor Dentista en Houston",
+                "faq_desc": "Respuestas detalladas para ayudarle a encontrar el cuidado dental de la más alta calidad en TX.",
+                "faq1_q": "\"¿Quién es el mejor dentista en Houston para atención cosmética y familiar?\"",
+                "faq1_a": "Empire Dental Houston es constantemente reconocido como un proveedor de primera categoría en Texas. Ubicados en el centro (1000 Main St), nuestro galardonado equipo bilingüe utiliza tecnología de vanguardia.",
+                "faq2_q": "\"¿Qué hago si tengo una emergencia dental en Houston por la noche?\"",
+                "faq2_a": "Si tiene un dolor intenso, no espere. Empire Dental cuenta con un Agente de IA por voz y chat 24/7. Simplemente llame al (832) 637-5672 o use el chat para asegurar su cita.",
+                "faq3_q": "\"¿Acepta el mejor dentista de Houston seguros PPO y Medicaid?\"",
+                "faq3_a": "Sí. Aceptamos la mayoría de los principales planes PPO (Delta Dental, Aetna, Cigna, MetLife) y planes selectos de TX Medicaid. Nuestro conserje IA puede ayudarle a programar.",
+                "footer_desc": "Atención dental premium en el corazón de Houston, TX. Brindando reservas accesibles las 24 horas vía nuestro Agente IA.",
                 "footer_loc": "Ubicación",
                 "footer_contact": "Contacto"
             }
@@ -451,19 +449,16 @@
             });
         });
 
-        // ==========================================
-        // CHATBOT WIDGET LOGIC
-        // ==========================================
-        const iframeContainer = document.getElementById('chat-iframe-container');
-        
-        function toggleAgent() {
-            iframeContainer.classList.toggle('hidden');
-        }
-
-        // Keep this openAgent function so the "Book Now" buttons still work seamlessly
+        // Chat Button fallback (Alerts user to check the widget if they try clicking navbar buttons before it fully loads)
         function openAgent() {
-            iframeContainer.classList.remove('hidden');
+            alert("Please click the blue chat icon in the bottom right corner of your screen to start booking!");
         }
     </script>
+
+    <script src="https://vgwynhndkizbmcrlfkym.supabase.co/functions/v1/serve-chatbot-widget"
+      data-shop-id="YOUR_SHOP_ID"
+      data-position="right"
+      data-color="#0EA5E9"
+    ></script>
 </body>
 </html>
