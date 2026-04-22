@@ -25,6 +25,10 @@
                             500: '#0ea5e9',
                             600: '#0284c7',
                             900: '#0c4a6e',
+                        },
+                        widget: {
+                            light: '#6366f1', // Indigo 500
+                            dark: '#4f46e5',  // Indigo 600
                         }
                     }
                 }
@@ -94,8 +98,8 @@
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#services" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_services">Services</a>
                     <a href="#geo-faq" class="text-slate-600 hover:text-brand-500 font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
-                    <a href="tel:8326375672" class="text-brand-600 font-bold hover:text-brand-700 transition" data-i18n="nav_call">Call AI Agent</a>
-                    <button onclick="openAgent()" class="bg-brand-50 text-brand-600 px-4 py-2 rounded-full font-bold hover:bg-brand-100 transition" data-i18n="nav_book">Chat to Book</button>
+                    <a href="tel:8326375672" class="text-brand-600 font-bold hover:text-brand-700 transition" data-i18n="nav_call">Call Assistant</a>
+                    <button onclick="toggleAgent()" class="bg-brand-50 text-brand-600 px-4 py-2 rounded-full font-bold hover:bg-brand-100 transition" data-i18n="nav_book">Chat to Book</button>
                     
                     <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
                         <span class="lang-en-btn px-3 py-1 rounded-full text-xs font-bold bg-white text-brand-600 shadow-sm transition-all duration-300">EN</span>
@@ -119,8 +123,8 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#services" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_services">Services</a>
                 <a href="#geo-faq" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
-                <a href="tel:8326375672" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_call">Call AI Agent</a>
-                <button onclick="openAgent()" class="w-full text-left px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Chat to Book</button>
+                <a href="tel:8326375672" class="block px-3 py-3 text-slate-600 hover:text-brand-500 hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_call">Call Assistant</a>
+                <button onclick="toggleAgent()" class="w-full text-left px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Chat to Book</button>
             </div>
         </div>
     </nav>
@@ -140,19 +144,19 @@
                 <span class="gradient-text">Houston.</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
-                Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 AI booking agent have you covered.
+                Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 virtual booking assistant have you covered.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="tel:8326375672" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl shadow-brand-500/30 flex items-center gap-3 w-full sm:w-auto justify-center">
-                    <i class="fa-solid fa-phone-volume animate-bounce"></i> 
+                    <i class="fa-solid fa-phone-volume animate-pulse"></i> 
                     <div class="text-left">
-                        <span class="block text-sm font-medium opacity-90" data-i18n="hero_call_sub">Call our AI Agent</span>
+                        <span class="block text-sm font-medium opacity-90" data-i18n="hero_call_sub">Call our 24/7 Assistant</span>
                         <span class="block">(832) 637-5672</span>
                     </div>
                 </a>
                 
-                <button onclick="openAgent()" class="bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                <button onclick="toggleAgent()" class="bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
                     <i class="fa-solid fa-message text-brand-500"></i> <span data-i18n="hero_btn">Chat to Book</span>
                 </button>
             </div>
@@ -200,10 +204,10 @@
                 <div class="p-8 rounded-3xl bg-brand-900 text-white relative overflow-hidden shadow-2xl shadow-brand-900/20 hover:-translate-y-1 transition-all duration-300">
                     <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-brand-500 rounded-full blur-3xl opacity-50"></div>
                     <div class="w-14 h-14 bg-white/10 text-brand-100 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-sm">
-                        <i class="fa-solid fa-robot"></i>
+                        <i class="fa-solid fa-headset"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" data-i18n="s3_title">24/7 AI Receptionist</h3>
-                    <p class="text-brand-100 mb-4" data-i18n="s3_desc">Tooth pain at 3 AM? Call our AI Agent directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.</p>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="s3_title">24/7 Virtual Receptionist</h3>
+                    <p class="text-brand-100 mb-4" data-i18n="s3_desc">Tooth pain at 3 AM? Call our Assistant directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.</p>
                     <div class="flex items-center gap-2 text-sm font-semibold text-brand-300">
                         <i class="fa-solid fa-circle text-xs text-green-400 animate-pulse"></i> <span data-i18n="s3_status">Call or Chat Online</span>
                     </div>
@@ -246,7 +250,7 @@
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2">
                         <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq2_a">
-                            If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 AI Voice and Chat Agent. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.
+                            If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 Virtual Voice and Chat Assistant. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.
                         </p>
                     </div>
                 </div>
@@ -261,7 +265,7 @@
                     </button>
                     <div class="faq-content hidden px-6 pb-6 pt-2">
                         <p class="text-slate-600 pl-8 leading-relaxed border-l-2 border-brand-100" data-i18n="faq3_a">
-                            Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated AI concierge can assist with scheduling regardless of your insurance type.
+                            Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated concierge can assist with scheduling regardless of your insurance type.
                         </p>
                     </div>
                 </div>
@@ -273,7 +277,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
             <div class="col-span-2">
                 <span class="font-bold text-2xl tracking-tight text-white mb-4 block">Empire<span class="text-brand-500">Dental</span></span>
-                <p class="mb-4 max-w-sm" data-i18n="footer_desc">Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our AI Voice & Chat Agent.</p>
+                <p class="mb-4 max-w-sm" data-i18n="footer_desc">Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our Virtual Assistant.</p>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4" data-i18n="footer_loc">Location</h4>
@@ -286,18 +290,61 @@
         </div>
     </footer>
 
+
+    <div id="custom-bot-widget" class="fixed bottom-24 right-6 w-[360px] max-w-[calc(100vw-3rem)] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 z-50 origin-bottom-right hidden border border-slate-100">
+        <div class="bg-gradient-to-br from-[#6A74ED] to-[#4A55C4] p-5 text-white flex justify-between items-start rounded-t-3xl">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md shadow-sm border border-white/10">
+                    <i class="fa-solid fa-robot text-2xl"></i>
+                </div>
+                <div class="mt-0.5">
+                    <h3 class="font-bold text-lg leading-tight tracking-wide">Assistant</h3>
+                    <div class="flex items-center gap-1.5 mt-1">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div>
+                        <span class="text-[13px] text-white/80 font-medium">Online now</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleAgent()" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 transition-colors border border-white/10">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+        
+        <div class="flex-1 bg-[#F8F9FB] p-5 h-[340px] overflow-y-auto">
+            <div class="bg-white rounded-[20px] rounded-tl-sm p-4 shadow-sm border border-slate-100 max-w-[85%] text-slate-700 text-[15px] leading-relaxed">
+                Hi there! How can I help you today?
+            </div>
+            <div class="text-[11px] text-slate-400 mt-2 ml-1 font-medium">9:36</div>
+        </div>
+        
+        <div class="p-6 bg-white flex items-center justify-center relative">
+            <button class="w-11 h-11 rounded-2xl border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors absolute left-6 shadow-sm">
+                <i class="fa-regular fa-keyboard text-lg"></i>
+            </button>
+            
+            <button class="w-16 h-16 rounded-full bg-[#6A74ED] hover:bg-[#5A64DD] text-white flex items-center justify-center text-2xl shadow-xl shadow-indigo-500/30 transition-transform transform hover:scale-105">
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+        </div>
+    </div>
+
+    <button onclick="toggleAgent()" class="fixed bottom-6 right-6 w-14 h-14 bg-[#6A74ED] hover:bg-[#5A64DD] text-white rounded-full shadow-2xl shadow-indigo-500/40 flex items-center justify-center text-2xl transition-transform hover:scale-110 z-40">
+        <i class="fa-solid fa-robot"></i>
+    </button>
+
+
     <script>
         // --- TRANSLATION DICTIONARY ---
         const translations = {
             "en": {
                 "nav_services": "Services",
                 "nav_faq": "Patient FAQ",
-                "nav_call": "Call AI Agent",
+                "nav_call": "Call Assistant",
                 "nav_book": "Chat to Book",
                 "hero_badge": "Voted Best Dentist in Houston",
                 "hero_title": "Perfect Smiles for <br class='hidden md:block'><span class='gradient-text'>Houston.</span>",
-                "hero_desc": "Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 AI booking agent have you covered.",
-                "hero_call_sub": "Call our AI Agent",
+                "hero_desc": "Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 virtual booking assistant have you covered.",
+                "hero_call_sub": "Call our 24/7 Assistant",
                 "hero_btn": "Chat to Book",
                 "hero_concierge_desc": "Secure your slot instantly, 24/7.",
                 "trust_title": "Trusted by patients across Greater Houston",
@@ -308,8 +355,8 @@
                 "s1_desc": "Veneers, Invisalign, and professional whitening to give you a confident Houston smile.",
                 "s2_title": "Family Dentistry",
                 "s2_desc": "Complete family care from pediatric checkups to senior dental health, all available in Spanish.",
-                "s3_title": "24/7 AI Receptionist",
-                "s3_desc": "Tooth pain at 3 AM? Call our AI Agent directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.",
+                "s3_title": "24/7 Virtual Receptionist",
+                "s3_desc": "Tooth pain at 3 AM? Call our Assistant directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.",
                 "s3_status": "Call or Chat Online",
                 "faq_tag": "Patient Guide",
                 "faq_title": "Why We're Rated the Best Dentist in Houston",
@@ -317,22 +364,22 @@
                 "faq1_q": "\"Who is the best dentist in Houston for cosmetic and family care?\"",
                 "faq1_a": "Empire Dental Houston is consistently recognized as a top-rated provider in Texas. Located in Downtown Houston (1000 Main St), our award-winning, bilingual team (English/Spanish) utilizes state-of-the-art technology to deliver exceptional cosmetic, restorative, and pediatric dentistry.",
                 "faq2_q": "\"What do I do if I have a dental emergency in Houston at night?\"",
-                "faq2_a": "If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 AI Voice and Chat Agent. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.",
+                "faq2_a": "If you have severe tooth pain after hours, you don't need to wait until morning. Empire Dental features an exclusive 24/7 Virtual Voice and Chat Assistant. Just call (832) 637-5672 or click the chat button to instantly secure the first available emergency slot.",
                 "faq3_q": "\"Does the best dentist in Houston accept PPO insurance and Medicaid?\"",
-                "faq3_a": "Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated AI concierge can assist with scheduling regardless of your insurance type.",
-                "footer_desc": "Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our AI Voice & Chat Agent.",
+                "faq3_a": "Yes, providing top-tier care means making it accessible. We accept most major PPO dental insurance plans (including Delta Dental, Aetna, Cigna, and MetLife) as well as select TX Medicaid plans. Our automated concierge can assist with scheduling regardless of your insurance type.",
+                "footer_desc": "Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our Virtual Assistant.",
                 "footer_loc": "Location",
                 "footer_contact": "Contact"
             },
             "es": {
                 "nav_services": "Servicios",
                 "nav_faq": "Preguntas Frecuentes",
-                "nav_call": "Llamar IA",
+                "nav_call": "Llamar Asistente",
                 "nav_book": "Chatear y Reservar",
                 "hero_badge": "Votado el Mejor Dentista de Houston",
                 "hero_title": "Sonrisas Perfectas para <br class='hidden md:block'><span class='gradient-text'>Houston.</span>",
-                "hero_desc": "Cuidado dental galardonado en el corazón de Houston. Ya sea que necesite una limpieza o tenga una emergencia a las 2 a.m., nuestro agente de IA 24/7 lo tiene cubierto.",
-                "hero_call_sub": "Llame a nuestro agente IA",
+                "hero_desc": "Cuidado dental galardonado en el corazón de Houston. Ya sea que necesite una limpieza o tenga una emergencia a las 2 a.m., nuestro asistente virtual 24/7 lo tiene cubierto.",
+                "hero_call_sub": "Llame al asistente 24/7",
                 "hero_btn": "Chatear y Reservar",
                 "hero_concierge_desc": "Asegure su espacio al instante, 24/7.",
                 "trust_title": "Con la confianza de pacientes en todo Houston",
@@ -343,8 +390,8 @@
                 "s1_desc": "Carillas, Invisalign y blanqueamiento profesional para darle una sonrisa segura.",
                 "s2_title": "Odontología Familiar",
                 "s2_desc": "Atención familiar completa, desde chequeos pediátricos hasta salud dental para personas mayores, todo en español.",
-                "s3_title": "Recepcionista IA 24/7",
-                "s3_desc": "¿Dolor de muelas a las 3 AM? Llame a nuestro Agente de IA directamente al (832) 637-5672 para asegurar una cita al instante.",
+                "s3_title": "Recepcionista Virtual 24/7",
+                "s3_desc": "¿Dolor de muelas a las 3 AM? Llame a nuestro Asistente directamente al (832) 637-5672 para asegurar una cita al instante.",
                 "s3_status": "Llame o Chatee en línea",
                 "faq_tag": "Guía del Paciente",
                 "faq_title": "Por Qué Somos Calificados Como el Mejor Dentista en Houston",
@@ -352,10 +399,10 @@
                 "faq1_q": "\"¿Quién es el mejor dentista en Houston para atención cosmética y familiar?\"",
                 "faq1_a": "Empire Dental Houston es constantemente reconocido como un proveedor de primera categoría en Texas. Ubicados en el centro (1000 Main St), nuestro galardonado equipo bilingüe utiliza tecnología de vanguardia.",
                 "faq2_q": "\"¿Qué hago si tengo una emergencia dental en Houston por la noche?\"",
-                "faq2_a": "Si tiene un dolor intenso, no espere. Empire Dental cuenta con un Agente de IA por voz y chat 24/7. Simplemente llame al (832) 637-5672 o use el chat para asegurar su cita.",
+                "faq2_a": "Si tiene un dolor intenso, no espere. Empire Dental cuenta con un Asistente Virtual por voz y chat 24/7. Simplemente llame al (832) 637-5672 o use el chat para asegurar su cita.",
                 "faq3_q": "\"¿Acepta el mejor dentista de Houston seguros PPO y Medicaid?\"",
-                "faq3_a": "Sí. Aceptamos la mayoría de los principales planes PPO (Delta Dental, Aetna, Cigna, MetLife) y planes selectos de TX Medicaid. Nuestro conserje IA puede ayudarle a programar.",
-                "footer_desc": "Atención dental premium en el corazón de Houston, TX. Brindando reservas accesibles las 24 horas vía nuestro Agente IA.",
+                "faq3_a": "Sí. Aceptamos la mayoría de los principales planes PPO (Delta Dental, Aetna, Cigna, MetLife) y planes selectos de TX Medicaid. Nuestro conserje puede ayudarle a programar.",
+                "footer_desc": "Atención dental premium en el corazón de Houston, TX. Brindando reservas accesibles las 24 horas vía nuestro Asistente Virtual.",
                 "footer_loc": "Ubicación",
                 "footer_contact": "Contacto"
             }
@@ -420,7 +467,7 @@
             }
         });
 
-        const mobileLinks = mobileMenu.querySelectorAll('a, button:not([onclick="toggleLanguage()"], [onclick="openAgent()"])');
+        const mobileLinks = mobileMenu.querySelectorAll('a, button:not([onclick="toggleLanguage()"], [onclick="toggleAgent()"])');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -449,16 +496,11 @@
             });
         });
 
-        // Chat Button fallback (Alerts user to check the widget if they try clicking navbar buttons before it fully loads)
-        function openAgent() {
-            alert("Please click the blue chat icon in the bottom right corner of your screen to start booking!");
+        // Chatbot Widget Toggle Logic
+        const chatWidget = document.getElementById('custom-bot-widget');
+        function toggleAgent() {
+            chatWidget.classList.toggle('hidden');
         }
     </script>
-
-    <script src="https://vgwynhndkizbmcrlfkym.supabase.co/functions/v1/serve-chatbot-widget"
-      data-shop-id="YOUR_SHOP_ID"
-      data-position="right"
-      data-color="#0EA5E9"
-    ></script>
 </body>
 </html>
