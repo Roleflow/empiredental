@@ -286,6 +286,17 @@
         </div>
     </footer>
 
+    <div id="chat-iframe-container" class="fixed bottom-24 right-6 z-50 hidden rounded-2xl overflow-hidden shadow-2xl bg-white transition-all duration-300 border border-slate-200">
+        <button onclick="toggleAgent()" class="absolute top-2 right-2 text-slate-500 hover:text-slate-800 z-10 bg-white/90 rounded-full w-6 h-6 flex items-center justify-center shadow-sm border border-slate-100 transition-colors text-xs">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <iframe src="https://ulioai.lovable.app/chatbot-embed/6a3045ed-0de0-4b7d-96ad-16b1826faa67" style="border:none; width:200px; height:300px;" allow="microphone"></iframe>
+    </div>
+
+    <button onclick="toggleAgent()" class="fixed bottom-6 right-6 w-14 h-14 bg-[#6A74ED] hover:bg-[#5A64DD] text-white rounded-full shadow-2xl shadow-indigo-500/40 flex items-center justify-center text-2xl transition-transform hover:scale-110 z-40">
+        <i class="fa-solid fa-robot"></i>
+    </button>
+
     <script>
         // --- TRANSLATION DICTIONARY ---
         const translations = {
@@ -449,17 +460,11 @@
             });
         });
 
-        // Safe fallback for the manual "Chat to Book" buttons since the 
-        // Supabase script auto-injects its own trigger mechanism.
+        // Chatbot Widget Toggle Logic
+        const iframeContainer = document.getElementById('chat-iframe-container');
         function toggleAgent() {
-            alert("Please click the blue chat icon in the bottom right corner of your screen to start booking!");
+            iframeContainer.classList.toggle('hidden');
         }
     </script>
-
-    <script src="https://vgwynhndkizbmcrlfkym.supabase.co/functions/v1/serve-chatbot-widget"
-      data-shop-id="6a3045ed-0de0-4b7d-96ad-16b1826faa67"
-      data-position="right"
-      data-color="#0EA5E9"
-    ></script>
 </body>
 </html>
