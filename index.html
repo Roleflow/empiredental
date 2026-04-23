@@ -45,28 +45,23 @@
         }
 
         /* ==========================================
-           WIDGET CSS OVERRIDES
-           This forces the Pulsy widget to match the custom UI 
-           we built (Colors, Fonts, Borders, Hiding the Mic)
+           PULSY WIDGET CSS OVERRIDES
+           This forces your live Pulsy widget to adopt 
+           the clean blue UI design you wanted!
            ========================================== */
         app-question-box {
-            /* Force the clean Inter font */
             font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
-            
-            /* Override default widget colors with the custom blue */
             --primary-color: #5ea3e3 !important; 
             --secondary-color: #0284c7 !important;
             --chat-primary: #5ea3e3 !important;
             --theme-color: #5ea3e3 !important;
-            
-            /* UI Styling to match the mockup */
             --border-radius: 24px !important;
             --bot-bubble-bg: #ffffff !important;
             --user-bubble-bg: #5ea3e3 !important;
             --user-bubble-text: #ffffff !important;
         }
 
-        /* Force-hide the microphone icon if it exists in the DOM */
+        /* Hide the microphone icon to keep it text-only */
         app-question-box .mic-button,
         app-question-box .voice-button,
         app-question-box [icon="mic"],
@@ -74,33 +69,13 @@
             display: none !important;
         }
 
-        /* Ensure the floating toggle button is circular and matches */
+        /* Style the launcher button to match the blue theme */
         app-question-box .floating-button {
             background-color: #5ea3e3 !important;
             border-radius: 50% !important;
             box-shadow: 0 10px 25px rgba(94, 163, 227, 0.4) !important;
         }
     </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Dentist",
-      "name": "Empire Dental Houston",
-      "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95",
-      "@id": "https://empiredentalhouston.demo",
-      "url": "https://empiredentalhouston.demo",
-      "telephone": "+1-832-637-5672",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1000 Main St",
-        "addressLocality": "Houston",
-        "addressRegion": "TX",
-        "postalCode": "77002",
-        "addressCountry": "US"
-      }
-    }
-    </script>
 </head>
 <body class="bg-white text-slate-800 antialiased">
 
