@@ -40,6 +40,25 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* CHATBOT UI OVERRIDES 
+           This forces the third-party widget to inherit your brand colors and fonts
+        */
+        app-question-box {
+            --primary-color: #0ea5e9;
+            --secondary-color: #0284c7;
+            --accent-color: #0ea5e9;
+            --chat-primary: #0ea5e9;
+            --theme-color: #0ea5e9;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+        
+        /* Attempt to override any internal buttons/headers if the component is open DOM */
+        app-question-box button, 
+        app-question-box .header,
+        app-question-box .bg-primary {
+            background-color: #0ea5e9 !important;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -288,7 +307,6 @@
         </div>
     </footer>
 
-
     <script>
         // --- TRANSLATION DICTIONARY ---
         const translations = {
@@ -452,15 +470,20 @@
             });
         });
 
-        // Safe fallback for the manual "Chat to Book" buttons since the 
-        // widget auto-injects its own trigger mechanism.
+        // Fallback alert if user clicks "Chat to Book" before the widget script finishes loading
         function toggleAgent() {
-            alert("Please click the chat icon in the bottom right corner of your screen to start booking!");
+            alert("Please click the floating chat icon in the bottom right corner of your screen!");
         }
     </script>
 
-    <app-question-box style="position:fixed;bottom:0;right:0;z-index: 9999;" aiAgentId="1375"
-        logo="YOUR_IMAGE_HOSTING_URL_HERE.jpg" apiKey="f70bbcae-4e48-4613-8175-df819d41c955"></app-question-box>
+
+    <app-question-box 
+        style="position:fixed;bottom:0;right:0;z-index: 9999;" 
+        aiAgentId="1375"
+        color="#0ea5e9"
+        logo="YOUR_IMAGE_HOSTING_URL_HERE.jpg" 
+        apiKey="f70bbcae-4e48-4613-8175-df819d41c955">
+    </app-question-box>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/momolakeit/AiAssistantEmbedded/embeddedchatbot.js"></script>
 
