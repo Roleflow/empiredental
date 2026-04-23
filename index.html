@@ -11,20 +11,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/momolakeit/AiAssistantEmbedded@latest/styles.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        chat: ['"Inter"', 'sans-serif'], // Added Inter for the chat widget to match the screenshot's clean look
+                        chat: ['"Inter"', 'sans-serif'],
                     },
                     colors: {
                         brand: {
                             50: '#f0f9ff',
                             100: '#e0f2fe',
                             400: '#38bdf8',
-                            500: '#5EA3E3', // Matched to the specific blue in your send button screenshot
+                            500: '#5ea3e3', 
                             600: '#0284c7',
                             900: '#0c4a6e',
                         }
@@ -40,19 +43,64 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        /* Custom scrollbar for the chat */
-        #chat-messages::-webkit-scrollbar {
-            width: 5px;
+
+        /* ==========================================
+           WIDGET CSS OVERRIDES
+           This forces the Pulsy widget to match the custom UI 
+           we built (Colors, Fonts, Borders, Hiding the Mic)
+           ========================================== */
+        app-question-box {
+            /* Force the clean Inter font */
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
+            
+            /* Override default widget colors with the custom blue */
+            --primary-color: #5ea3e3 !important; 
+            --secondary-color: #0284c7 !important;
+            --chat-primary: #5ea3e3 !important;
+            --theme-color: #5ea3e3 !important;
+            
+            /* UI Styling to match the mockup */
+            --border-radius: 24px !important;
+            --bot-bubble-bg: #ffffff !important;
+            --user-bubble-bg: #5ea3e3 !important;
+            --user-bubble-text: #ffffff !important;
         }
-        #chat-messages::-webkit-scrollbar-track {
-            background: transparent;
+
+        /* Force-hide the microphone icon if it exists in the DOM */
+        app-question-box .mic-button,
+        app-question-box .voice-button,
+        app-question-box [icon="mic"],
+        app-question-box i.material-icons:contains('mic') {
+            display: none !important;
         }
-        #chat-messages::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 10px;
+
+        /* Ensure the floating toggle button is circular and matches */
+        app-question-box .floating-button {
+            background-color: #5ea3e3 !important;
+            border-radius: 50% !important;
+            box-shadow: 0 10px 25px rgba(94, 163, 227, 0.4) !important;
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Empire Dental Houston",
+      "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95",
+      "@id": "https://empiredentalhouston.demo",
+      "url": "https://empiredentalhouston.demo",
+      "telephone": "+1-832-637-5672",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1000 Main St",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "postalCode": "77002",
+        "addressCountry": "US"
+      }
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-800 antialiased">
 
@@ -70,32 +118,13 @@
                     <a href="#services" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition" data-i18n="nav_services">Services</a>
                     <a href="#geo-faq" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
                     <a href="tel:8326375672" class="text-[#0ea5e9] font-bold hover:text-sky-600 transition" data-i18n="nav_call">Call Assistant</a>
-                    <button onclick="toggleAgent()" class="bg-sky-50 text-[#0ea5e9] px-4 py-2 rounded-full font-bold hover:bg-sky-100 transition" data-i18n="nav_book">Chat to Book</button>
+                    <button onclick="alert('Click the chat widget in the bottom right corner!')" class="bg-sky-50 text-[#0ea5e9] px-4 py-2 rounded-full font-bold hover:bg-sky-100 transition" data-i18n="nav_book">Chat to Book</button>
                     
                     <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
                         <span class="lang-en-btn px-3 py-1 rounded-full text-xs font-bold bg-white text-[#0ea5e9] shadow-sm transition-all duration-300">EN</span>
                         <span class="lang-es-btn px-3 py-1 rounded-full text-xs font-bold text-slate-500 hover:text-slate-700 transition-all duration-300">ES</span>
                     </div>
                 </div>
-
-                <div class="md:hidden flex items-center gap-4">
-                    <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
-                        <span class="lang-en-btn px-2 py-1 rounded-full text-[10px] font-bold bg-white text-[#0ea5e9] shadow-sm transition-all duration-300">EN</span>
-                        <span class="lang-es-btn px-2 py-1 rounded-full text-[10px] font-bold text-slate-500 transition-all duration-300">ES</span>
-                    </div>
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-[#0ea5e9] focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#services" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_services">Services</a>
-                <a href="#geo-faq" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
-                <a href="tel:8326375672" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_call">Call Assistant</a>
-                <button onclick="toggleAgent()" class="w-full text-left px-3 py-3 text-[#0ea5e9] font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Chat to Book</button>
             </div>
         </div>
     </nav>
@@ -126,10 +155,6 @@
                         <span class="block">(832) 637-5672</span>
                     </div>
                 </a>
-                
-                <button onclick="toggleAgent()" class="bg-white border-2 border-slate-200 hover:border-[#0ea5e9] text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
-                    <i class="fa-solid fa-message text-[#0ea5e9]"></i> <span data-i18n="hero_btn">Chat to Book</span>
-                </button>
             </div>
             <div class="mt-4 text-sm text-slate-500 font-medium text-center">
                 <p data-i18n="hero_concierge_desc">Secure your slot instantly, 24/7.</p>
@@ -194,66 +219,41 @@
     </footer>
 
 
-    <button onclick="toggleAgent()" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-500 hover:bg-brand-600 text-white rounded-full shadow-2xl shadow-sky-500/30 flex items-center justify-center text-2xl transition-transform hover:scale-110 z-40">
-        <i class="fa-regular fa-comment-dots"></i>
-    </button>
+    <app-question-box 
+        style="position:fixed;bottom:0;right:0;z-index: 9999;" 
+        aiAgentId="1376"
+        apiKey="f70bbcae-4e48-4613-8175-df819d41c955"
+        logo="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/comment-dots.svg">
+    </app-question-box>
 
-    <div id="custom-chat-container" class="fixed bottom-24 right-6 z-50 hidden flex-col w-[380px] h-[550px] max-w-[calc(100vw-3rem)] max-h-[calc(100vh-8rem)] bg-white rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden font-chat transition-all duration-300 origin-bottom-right">
-        
-        <div class="flex items-center justify-between px-5 py-4 bg-white border-b border-slate-100 z-10">
-            <div class="flex items-center gap-3">
-                <div class="w-11 h-11 bg-[#121629] rounded-xl flex items-center justify-center shadow-inner relative overflow-hidden">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-4 h-4 bg-blue-400 rounded-full blur-[6px] opacity-70"></div>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-slate-900 font-semibold text-[17px] leading-tight">Booking Agent</h3>
-                    <div class="flex items-center gap-1.5 mt-0.5">
-                        <div class="w-2 h-2 bg-[#4ade80] rounded-full"></div>
-                        <span class="text-[13px] text-slate-400 font-medium">Online now</span>
-                    </div>
-                </div>
-            </div>
-            <button onclick="toggleAgent()" class="w-8 h-8 rounded-xl bg-slate-100 text-slate-400 hover:bg-slate-200 hover:text-slate-600 flex items-center justify-center transition-colors">
-                <i class="fa-solid fa-xmark text-sm"></i>
-            </button>
-        </div>
-
-        <div id="chat-messages" class="flex-1 bg-[#F8F9FA] p-5 overflow-y-auto flex flex-col gap-4">
-            
-            <div class="self-start max-w-[85%]">
-                <div class="bg-white text-slate-800 text-[15px] px-5 py-3.5 rounded-[20px] rounded-tl-sm border border-slate-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-                    How can I make you smile today?
-                </div>
-                <div class="text-[11px] text-slate-400 mt-1.5 ml-1 font-medium">18:05</div>
-            </div>
-
-        </div>
-
-        <div class="p-4 bg-white border-t border-slate-100">
-            <form onsubmit="handleDemoSubmit(event)" class="flex items-center gap-3">
-                <input type="text" id="demo-chat-input" placeholder="Type your message..." autocomplete="off" class="flex-1 bg-[#F4F6F8] text-[15px] border border-slate-200 rounded-[20px] px-5 py-3.5 text-slate-700 placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all">
-                <button type="submit" class="w-12 h-12 bg-brand-500 hover:bg-brand-600 text-white rounded-full flex items-center justify-center flex-shrink-0 transition-colors shadow-sm focus:outline-none">
-                    <i class="fa-regular fa-paper-plane translate-y-[1px] -translate-x-[1px]"></i>
-                </button>
-            </form>
-        </div>
-    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/momolakeit/AiAssistantEmbedded/embeddedchatbot.js"></script>
 
 
     <script>
-        // Dictionary for main website
         const translations = {
             "en": {
                 "nav_services": "Services", "nav_faq": "Patient FAQ", "nav_call": "Call Assistant", "nav_book": "Chat to Book",
                 "hero_badge": "Voted Best Dentist in Houston", "hero_title": "Perfect Smiles for <br class='hidden md:block'><span class='gradient-text'>Houston.</span>", "hero_desc": "Award-winning dental care in the heart of Houston. Whether you need a routine cleaning or have a 2am dental emergency, our bilingual team and 24/7 virtual booking assistant have you covered.",
-                "hero_call_sub": "Call our 24/7 Assistant", "hero_btn": "Chat to Book", "hero_concierge_desc": "Secure your slot instantly, 24/7."
+                "hero_call_sub": "Call our 24/7 Assistant", "hero_btn": "Chat to Book", "hero_concierge_desc": "Secure your slot instantly, 24/7.",
+                "trust_title": "Trusted by patients across Greater Houston", "trust_yelp": "Yelp Recommended",
+                "services_title": "Comprehensive Care in Houston", "services_desc": "We combine state-of-the-art technology with a warm, welcoming environment for our Latino and English-speaking communities.",
+                "s1_title": "Cosmetic Dentistry", "s1_desc": "Veneers, Invisalign, and professional whitening to give you a confident Houston smile.",
+                "s2_title": "Family Dentistry", "s2_desc": "Complete family care from pediatric checkups to senior dental health, all available in Spanish.",
+                "s3_title": "24/7 Virtual Receptionist", "s3_desc": "Tooth pain at 3 AM? Call our Assistant directly at (832) 637-5672 to secure an emergency appointment instantly over the phone.",
+                "s3_status": "Call or Chat Online", "footer_desc": "Award-winning, premium dental care in the heart of Houston, TX. Delivering accessible, 24/7 booking via our Virtual Assistant.",
+                "footer_loc": "Location", "footer_contact": "Contact"
             },
             "es": {
                 "nav_services": "Servicios", "nav_faq": "Preguntas Frecuentes", "nav_call": "Llamar Asistente", "nav_book": "Chatear y Reservar",
                 "hero_badge": "Votado el Mejor Dentista de Houston", "hero_title": "Sonrisas Perfectas para <br class='hidden md:block'><span class='gradient-text'>Houston.</span>", "hero_desc": "Cuidado dental galardonado en el corazón de Houston. Ya sea que necesite una limpieza o tenga una emergencia a las 2 a.m., nuestro asistente virtual 24/7 lo tiene cubierto.",
-                "hero_call_sub": "Llame al asistente 24/7", "hero_btn": "Chatear y Reservar", "hero_concierge_desc": "Asegure su espacio al instante, 24/7."
+                "hero_call_sub": "Llame al asistente 24/7", "hero_btn": "Chatear y Reservar", "hero_concierge_desc": "Asegure su espacio al instante, 24/7.",
+                "trust_title": "Con la confianza de pacientes en todo Houston", "trust_yelp": "Recomendado por Yelp",
+                "services_title": "Cuidado Integral en Houston", "services_desc": "Combinamos tecnología de punta con un ambiente cálido y acogedor para nuestras comunidades latinas y angloparlantes.",
+                "s1_title": "Odontología Cosmética", "s1_desc": "Carillas, Invisalign y blanqueamiento profesional para darle una sonrisa segura.",
+                "s2_title": "Odontología Familiar", "s2_desc": "Atención familiar completa, desde chequeos pediátricos hasta salud dental para personas mayores, todo en español.",
+                "s3_title": "Recepcionista Virtual 24/7", "s3_desc": "¿Dolor de muelas a las 3 AM? Llame a nuestro Asistente directamente al (832) 637-5672 para asegurar una cita al instante.",
+                "s3_status": "Llame o Chatee en línea", "footer_desc": "Atención dental premium en el corazón de Houston, TX. Brindando reservas accesibles las 24 horas vía nuestro Asistente Virtual.",
+                "footer_loc": "Ubicación", "footer_contact": "Contacto"
             }
         };
 
@@ -276,60 +276,6 @@
                 esBtns.forEach(btn => { btn.classList.add('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.remove('text-slate-500'); });
                 enBtns.forEach(btn => { btn.classList.remove('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.add('text-slate-500'); });
             }
-        }
-
-        // Chat Widget Toggle Logic
-        const chatContainer = document.getElementById('custom-chat-container');
-        const chatInput = document.getElementById('demo-chat-input');
-        
-        function toggleAgent() {
-            chatContainer.classList.toggle('hidden');
-            chatContainer.classList.toggle('flex');
-            if(!chatContainer.classList.contains('hidden')) {
-                setTimeout(() => chatInput.focus(), 100);
-            }
-        }
-
-        // Demo Chat Functionality (To make the UI interactive for testing)
-        function handleDemoSubmit(e) {
-            e.preventDefault();
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            const chatMessages = document.getElementById('chat-messages');
-            
-            // Append User Message
-            const userDiv = document.createElement('div');
-            userDiv.className = 'self-end max-w-[85%] mt-2';
-            userDiv.innerHTML = `
-                <div class="bg-brand-500 text-white text-[15px] px-5 py-3.5 rounded-[20px] rounded-tr-sm shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
-                    ${message}
-                </div>
-            `;
-            chatMessages.appendChild(userDiv);
-            chatInput.value = '';
-            
-            // Scroll to bottom
-            chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-
-            // Simulate Agent Reply (Connect your API here later!)
-            setTimeout(() => {
-                const agentDiv = document.createElement('div');
-                agentDiv.className = 'self-start max-w-[85%] mt-2';
-                
-                // Get current time like in screenshot
-                const now = new Date();
-                const timeStr = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
-
-                agentDiv.innerHTML = `
-                    <div class="bg-white text-slate-800 text-[15px] px-5 py-3.5 rounded-[20px] rounded-tl-sm border border-slate-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-                        I am currently operating as a frontend template! Your developer can connect my UI to the API to make me fully functional.
-                    </div>
-                    <div class="text-[11px] text-slate-400 mt-1.5 ml-1 font-medium">${timeStr}</div>
-                `;
-                chatMessages.appendChild(agentDiv);
-                chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-            }, 1000);
         }
     </script>
 </body>
