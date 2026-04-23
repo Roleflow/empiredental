@@ -11,9 +11,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/momolakeit/AiAssistantEmbedded@latest/styles.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
@@ -43,39 +40,27 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* ==========================================
-           PULSY WIDGET CSS OVERRIDES
-           This forces your live Pulsy widget to adopt 
-           the clean blue UI design you wanted!
-           ========================================== */
-        app-question-box {
-            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
-            --primary-color: #5ea3e3 !important; 
-            --secondary-color: #0284c7 !important;
-            --chat-primary: #5ea3e3 !important;
-            --theme-color: #5ea3e3 !important;
-            --border-radius: 24px !important;
-            --bot-bubble-bg: #ffffff !important;
-            --user-bubble-bg: #5ea3e3 !important;
-            --user-bubble-text: #ffffff !important;
-        }
-
-        /* Hide the microphone icon to keep it text-only */
-        app-question-box .mic-button,
-        app-question-box .voice-button,
-        app-question-box [icon="mic"],
-        app-question-box i.material-icons:contains('mic') {
-            display: none !important;
-        }
-
-        /* Style the launcher button to match the blue theme */
-        app-question-box .floating-button {
-            background-color: #5ea3e3 !important;
-            border-radius: 50% !important;
-            box-shadow: 0 10px 25px rgba(94, 163, 227, 0.4) !important;
-        }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Empire Dental Houston",
+      "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95",
+      "@id": "https://empiredentalhouston.demo",
+      "url": "https://empiredentalhouston.demo",
+      "telephone": "+1-832-637-5672",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1000 Main St",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "postalCode": "77002",
+        "addressCountry": "US"
+      }
+    }
+    </script>
 </head>
 <body class="bg-white text-slate-800 antialiased">
 
@@ -93,13 +78,32 @@
                     <a href="#services" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition" data-i18n="nav_services">Services</a>
                     <a href="#geo-faq" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
                     <a href="tel:8326375672" class="text-[#0ea5e9] font-bold hover:text-sky-600 transition" data-i18n="nav_call">Call Assistant</a>
-                    <button onclick="alert('Click the chat widget in the bottom right corner!')" class="bg-sky-50 text-[#0ea5e9] px-4 py-2 rounded-full font-bold hover:bg-sky-100 transition" data-i18n="nav_book">Chat to Book</button>
+                    <button onclick="toggleAgent()" class="bg-sky-50 text-[#0ea5e9] px-4 py-2 rounded-full font-bold hover:bg-sky-100 transition" data-i18n="nav_book">Chat to Book</button>
                     
                     <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
                         <span class="lang-en-btn px-3 py-1 rounded-full text-xs font-bold bg-white text-[#0ea5e9] shadow-sm transition-all duration-300">EN</span>
                         <span class="lang-es-btn px-3 py-1 rounded-full text-xs font-bold text-slate-500 hover:text-slate-700 transition-all duration-300">ES</span>
                     </div>
                 </div>
+
+                <div class="md:hidden flex items-center gap-4">
+                    <div class="flex items-center bg-slate-100 rounded-full p-1 cursor-pointer border border-slate-200" onclick="toggleLanguage()">
+                        <span class="lang-en-btn px-2 py-1 rounded-full text-[10px] font-bold bg-white text-[#0ea5e9] shadow-sm transition-all duration-300">EN</span>
+                        <span class="lang-es-btn px-2 py-1 rounded-full text-[10px] font-bold text-slate-500 transition-all duration-300">ES</span>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-[#0ea5e9] focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full z-30">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_services">Services</a>
+                <a href="#geo-faq" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_faq">Patient FAQ</a>
+                <a href="tel:8326375672" class="block px-3 py-3 text-slate-600 hover:text-[#0ea5e9] hover:bg-slate-50 rounded-lg font-medium transition" data-i18n="nav_call">Call Assistant</a>
+                <button onclick="toggleAgent()" class="w-full text-left px-3 py-3 text-[#0ea5e9] font-bold hover:bg-brand-50 rounded-lg transition" data-i18n="nav_book">Chat to Book</button>
             </div>
         </div>
     </nav>
@@ -130,6 +134,10 @@
                         <span class="block">(832) 637-5672</span>
                     </div>
                 </a>
+                
+                <button onclick="toggleAgent()" class="bg-white border-2 border-slate-200 hover:border-[#0ea5e9] text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <i class="fa-solid fa-message text-[#0ea5e9]"></i> <span data-i18n="hero_btn">Chat to Book</span>
+                </button>
             </div>
             <div class="mt-4 text-sm text-slate-500 font-medium text-center">
                 <p data-i18n="hero_concierge_desc">Secure your slot instantly, 24/7.</p>
@@ -193,17 +201,6 @@
         </div>
     </footer>
 
-
-    <app-question-box 
-        style="position:fixed;bottom:0;right:0;z-index: 9999;" 
-        aiAgentId="1376"
-        apiKey="f70bbcae-4e48-4613-8175-df819d41c955"
-        logo="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/comment-dots.svg">
-    </app-question-box>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/momolakeit/AiAssistantEmbedded/embeddedchatbot.js"></script>
-
-
     <script>
         const translations = {
             "en": {
@@ -252,6 +249,47 @@
                 enBtns.forEach(btn => { btn.classList.remove('bg-white', 'text-brand-600', 'shadow-sm'); btn.classList.add('text-slate-500'); });
             }
         }
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('border-slate-200', 'shadow-sm');
+                navbar.classList.remove('border-transparent');
+            } else {
+                navbar.classList.remove('border-slate-200', 'shadow-sm');
+                navbar.classList.add('border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileIcon = mobileBtn.querySelector('i');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                mobileIcon.classList.remove('fa-xmark');
+                mobileIcon.classList.add('fa-bars');
+            } else {
+                mobileIcon.classList.remove('fa-bars');
+                mobileIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Fallback for manual "Chat to Book" buttons to direct users to the Roleflow widget
+        function toggleAgent() {
+            alert("Please click the floating chat icon in the bottom right corner of your screen!");
+        }
     </script>
+
+    <script>
+      window.RoleflowConfig = {
+        clientId: 1,
+        apiUrl: "https://3000-ii676u1dd0tae4onaw1tl-53cf878c.us2.manus.computer"
+      };
+    </script>
+    <script src="https://3000-ii676u1dd0tae4onaw1tl-53cf878c.us2.manus.computer/widget.js" defer></script>
 </body>
 </html>
